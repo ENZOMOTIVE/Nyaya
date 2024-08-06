@@ -1,6 +1,6 @@
 # Nyaya: Web3 Integrated FIR Filing system
 
-##introduction
+## Introduction
 
 Nyaya is a revolutionary project designed to revolutionize the process of filing and verifying FIRs (First Information Reports) by leveraging blockchain technology. In a world where personal safety can be compromised when seeking justice, Nyaya provides a secure and anonymous platform for individuals to report crimes, ensuring their identities remain protected while promoting transparency and accountability in the legal system.
 
