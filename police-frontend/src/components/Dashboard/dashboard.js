@@ -4,7 +4,7 @@ import { ethers } from 'ethers';
 
 const PoliceContractAddress = "0x905AdE0F6CDbae009034293DAFBee66690aF6B98";
 
-const PoliceContract = [{
+const PoliceContractABI = [{
     "_format": "hh-sol-artifact-1",
     "contractName": "PoliceContract",
     "sourceName": "contracts/PoliceContract.sol",
@@ -101,6 +101,8 @@ const PoliceContract = [{
     "deployedLinkReferences": {}
   }
   ];
+
+  
   const Dashboard = () => {
     const [cases, setCases] = useState([]);
   
