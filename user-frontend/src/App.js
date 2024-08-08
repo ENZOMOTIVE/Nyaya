@@ -25,6 +25,17 @@ function App() {
     }
   };
 
+  const disconnectWallet = () => {
+    setWalletAddress('');
+  };
+
+  const truncateAddress = (address) => {
+    if (address.length > 12) {
+      return `${address.slice(0, 6)}...${address.slice(-4)}`;
+    }
+    return address;
+  };
+
   return (
     <Router>
       <div className="App">
@@ -32,17 +43,19 @@ function App() {
           <nav>
             <Link to="/">Home</Link>
             <Link to="/casefile">File Case</Link>
-            {walletAddress ? (
-              <div>
-                <p>Wallet Address: {walletAddress}</p>
-                <button onClick={() => setWalletAddress('')}>Disconnect</button>
-              </div>
-            ) : (
-              <button onClick={connectWallet}>Connect Wallet</button>
-            )}
           </nav>
           <Routes>
-            <Route path="/" element={<WelcomePage />} />
+            <Route
+              path="/"
+              element={
+                <WelcomePage
+                  connectWallet={connectWallet}
+                  disconnectWallet={disconnectWallet}
+                  walletAddress={walletAddress}
+                  truncateAddress={truncateAddress}
+                />
+              }
+            />
             <Route path="/casefile" element={<FileCasePage />} />
             <Route path="/submit" element={<SubmitPage />} />
           </Routes>
