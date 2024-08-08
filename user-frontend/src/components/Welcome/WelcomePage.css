@@ -4,28 +4,31 @@ body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     /* Keeping the existing background color as is */
-    
+   
     color: white;
 }
 
 .welcome-page {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
     height: 100vh;
     /* Keeping the existing background color */
     
+}
+
+.content-container {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    flex-wrap: wrap; /* This ensures the layout is responsive */
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 .content {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 600px;
+    max-width: 500px;
     padding: 20px;
 }
 
@@ -62,10 +65,14 @@ body {
 }
 
 .image-container {
-    margin-top: 40px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .image-container img {
-    width: 300px;
+    max-width: 62%;
     height: auto;
 }
