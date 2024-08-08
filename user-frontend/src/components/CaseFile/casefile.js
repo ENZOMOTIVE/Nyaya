@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers'; // Correct import statement
+import axios from 'axios';
+
 const UserContractABI = [
   {
     "anonymous": false,
@@ -110,31 +112,38 @@ const CaseFile = () => {
     const [evidence, setEvidence] = useState('');
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        try {
-            if (typeof window.ethereum !== 'undefined') {
-                // Using BrowserProvider for recent ethers version
-                const provider = new ethers.BrowserProvider(window.ethereum);
-                const signer = await provider.getSigner();
-                const contract = new ethers.Contract(UserContractAddress, UserContractABI, signer);
-
-                if (!contract || !contract.submitCase) {
-                    throw new Error('Contract or submitCase method is not available');
-                }
-
-                const transaction = await contract.submitCase(details, evidence);
-                await transaction.wait();
-                alert("Case submitted successfully!");
-            } else {
-                alert('Please install MetaMask');
-            }
-        } catch (error) {
-            console.error("Error submitting case:", error);
-            alert("Failed to submit case");
-        }
-    };
-
+      event.preventDefault();
+  
+      try {
+          if (typeof window.ethereum !== 'undefined') {
+              // Using BrowserProvider for recent ethers version
+              const provider = new ethers.BrowserProvider(window.ethereum);
+              const signer = await provider.getSigner();
+              const contract = new ethers.Contract(UserContractAddress, UserContractABI, signer);
+  
+              if (!contract || !contract.submitCase) {
+                  throw new Error('Contract or submitCase method is not available');
+              }
+  
+              const transaction = await contract.submitCase(details, evidence);
+              await transaction.wait();
+              alert("Case submitted to blockchain!");
+  
+              // Send case data to backend server
+              await axios.post('http://localhost:5000/send-case', {
+                  details,
+                  evidence,
+              });
+              alert("Case sent to police server!");
+          } else {
+              alert('Please install MetaMask');
+          }
+      } catch (error) {
+          console.error("Error submitting case:", error);
+          alert("Failed to submit case");
+      }
+  };
+  
     return (
         <form onSubmit={handleSubmit}>
             <label>

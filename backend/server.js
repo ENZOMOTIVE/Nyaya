@@ -13,9 +13,11 @@ let cases = [];
 
 app.post('/send-case', (req, res) => {
   const caseData = req.body;
+  console.log('Received case data:', caseData);  // Log the case data
   cases.push(caseData);
   res.send({ message: 'Case sent to police' });
 });
+
 
 app.get('/cases', (req, res) => {
   res.send(cases);
