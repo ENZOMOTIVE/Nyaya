@@ -32,27 +32,25 @@ const WelcomePage = ({ connectWallet, disconnectWallet, walletAddress, truncateA
     {/* Features Section */}
     <section className="features-section">
       <h2>Features</h2>
-      <div className="footer-features">
-        <div className="feature-box">
-          <h3>Secure FIR Filing</h3>
-          <p>File your FIR securely on the blockchain, ensuring data integrity and privacy.</p>
-        </div>
-        <div className="feature-box">
-          <h3>Anonymous ID</h3>
-          <p>Protect your identity while filing complaints using an anonymous ID.</p>
-        </div>
-        <div className="feature-box">
-          <h3>Real-time Status Updates</h3>
-          <p>Get real-time updates on the status of your FIR and case processing.</p>
-        </div>
-        <div className="feature-box">
-          <h3>Easy Wallet Integration</h3>
-          <p>Seamlessly connect your wallet to manage your FIR filings and updates.</p>
-        </div>
-        <div className="feature-box">
-          <h3>Efficient Case Management</h3>
-          <p>Manage and track your cases efficiently through our platform.</p>
-        </div>
+      <div className="feature-box">
+        <h3>Secure FIR Filing</h3>
+        <p>File your FIR securely on the blockchain, ensuring data integrity and privacy.</p>
+      </div>
+      <div className="feature-box">
+        <h3>Anonymous ID</h3>
+        <p>Protect your identity while filing complaints using an anonymous ID.</p>
+      </div>
+      <div className="feature-box">
+        <h3>Real-time Status Updates</h3>
+        <p>Get real-time updates on the status of your FIR and case processing.</p>
+      </div>
+      <div className="feature-box">
+        <h3>Easy Wallet Integration</h3>
+        <p>Seamlessly connect your wallet to manage your FIR filings and updates.</p>
+      </div>
+      <div className="feature-box">
+        <h3>Efficient Case Management</h3>
+        <p>Manage and track your cases efficiently through our platform.</p>
       </div>
     </section>
   </div>
