@@ -1,0 +1,71 @@
+/* WelcomePage.css */
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    /* Keeping the existing background color as is */
+    
+    color: white;
+}
+
+.welcome-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    /* Keeping the existing background color */
+    
+    justify-content: center;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.content p {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.connect-wallet, .disconnect-wallet {
+    background-color: #1c9e7d;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+.connect-wallet:hover, .disconnect-wallet:hover {
+    background-color: #15b891;
+}
+
+.wallet-address {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #dcdcdc;
+}
+
+.image-container {
+    margin-top: 40px;
+}
+
+.image-container img {
+    width: 300px;
+    height: auto;
+}
