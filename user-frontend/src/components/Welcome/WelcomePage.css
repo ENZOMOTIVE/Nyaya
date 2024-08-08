@@ -3,43 +3,47 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    /* Keeping the existing background color as is */
-   
     color: white;
+    box-sizing: border-box;
 }
 
 .welcome-page {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    /* Keeping the existing background color */
-    
+    padding: 20px;
+    min-height: 100vh; /* Ensure the welcome page takes up at least the full height of the viewport */
+    box-sizing: border-box;
 }
 
 .content-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap; /* This ensures the layout is responsive */
-    max-width: 80%;
+    flex-wrap: wrap;
+    max-width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .content {
     flex: 1;
     max-width: 500px;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .content h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
+    overflow-wrap: break-word;
 }
 
 .content p {
     margin: 10px 0;
     font-size: 1.2em;
+    overflow-wrap: break-word;
 }
 
 .connect-wallet, .disconnect-wallet {
@@ -73,6 +77,52 @@ body {
 }
 
 .image-container img {
-    max-width: 62%;
+    max-width: 63%;
     height: auto;
+}
+
+/* Features section styling */
+.features-section {
+    background-color: #333;
+    color: #f8f9fa;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.features-section h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.footer-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-box {
+    background-color: #444;
+    color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+.feature-box h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+}
+
+.feature-box p {
+    font-size: 1em;
+    margin: 10px 0;
 }
