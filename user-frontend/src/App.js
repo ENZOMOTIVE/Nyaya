@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import WelcomePage from './components/Welcome/welcome';
 import FileCasePage from './components/CaseFile/casefile';
 import SubmitPage from './components/Submit/submit';
@@ -13,13 +15,13 @@ function App() {
       try {
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         setWalletAddress(accounts[0]);
-        // Show notification
-        alert('Wallet connected!');
+        toast.success('Wallet connected!');
       } catch (error) {
         console.error('Failed to connect wallet:', error);
+        toast.error('Failed to connect wallet');
       }
     } else {
-      alert('Please install MetaMask');
+      toast.error('Please install MetaMask');
     }
   };
 
@@ -31,7 +33,10 @@ function App() {
             <Link to="/">Home</Link>
             <Link to="/casefile">File Case</Link>
             {walletAddress ? (
-              <p>Wallet Address: {walletAddress}</p>
+              <div>
+                <p>Wallet Address: {walletAddress}</p>
+                <button onClick={() => setWalletAddress('')}>Disconnect</button>
+              </div>
             ) : (
               <button onClick={connectWallet}>Connect Wallet</button>
             )}
@@ -42,6 +47,7 @@ function App() {
             <Route path="/submit" element={<SubmitPage />} />
           </Routes>
         </header>
+        <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} closeOnClick pauseOnHover draggable />
       </div>
     </Router>
   );
