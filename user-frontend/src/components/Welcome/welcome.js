@@ -1,5 +1,6 @@
 import React from 'react';
 import './WelcomePage.css'; // Import the CSS file for styling
+import Image from './logo.png'; // Import the image
 
 const WelcomePage = ({ connectWallet, disconnectWallet, walletAddress, truncateAddress }) => (
   <div className="welcome-page">
@@ -18,7 +19,7 @@ const WelcomePage = ({ connectWallet, disconnectWallet, walletAddress, truncateA
     </div>
 
     <div className="image-container">
-      <img src="path/to/environment_image.png" alt="Environment" />
+      <img src={Image} alt="Environment" />
     </div>
   </div>
 );
