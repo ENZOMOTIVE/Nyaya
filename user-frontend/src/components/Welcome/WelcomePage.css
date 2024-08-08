@@ -13,18 +13,19 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    min-height: 100vh; /* Ensure the welcome page takes up at least the full height of the viewport */
+    min-height: 100vh;
     box-sizing: border-box;
 }
 
 .content-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Add space between content and image */
     flex-wrap: wrap;
     max-width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
+    gap: 40px; /* Add gap between the content and image container */
 }
 
 .content {
@@ -74,10 +75,11 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .image-container img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
 }
 

@@ -4,7 +4,7 @@ import Image from './logo.png'; // Import the image
 
 const WelcomePage = ({ connectWallet, disconnectWallet, walletAddress, truncateAddress }) => (
   <div>
-    {/* Welcome Page Content */}
+    
     <div className="welcome-page">
       <div className="content-container">
         <div className="content">
@@ -52,7 +52,9 @@ const WelcomePage = ({ connectWallet, disconnectWallet, walletAddress, truncateA
         <h3>Efficient Case Management</h3>
         <p>Manage and track your cases efficiently through our platform.</p>
       </div>
+
     </section>
+    <p>Made with ❤️ by Aayushman</p>
   </div>
 );
 
