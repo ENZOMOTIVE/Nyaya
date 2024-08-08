@@ -133,3 +133,54 @@ body {
     justify-content: center;
     padding-bottom: 60px; /* Add some padding at the bottom of the section */
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column; /* Stack content vertically on smaller screens */
+        text-align: center;
+        gap: 20px; /* Reduce gap for smaller screens */
+    }
+
+    .content {
+        max-width: 100%; /* Allow content to take up full width */
+        padding: 10px;
+    }
+
+    .content h1 {
+        font-size: 2em; /* Slightly reduce heading size for mobile */
+    }
+
+    .content p {
+        font-size: 1em; /* Adjust paragraph font size */
+    }
+
+    .connect-wallet, .disconnect-wallet {
+        padding: 10px 20px; /* Adjust button padding */
+        font-size: 0.9em;
+    }
+
+    .image-container img {
+        max-width: 80%; /* Reduce image size on mobile */
+    }
+}
+
+/* Additional small screen adjustments for very small devices */
+@media (max-width: 480px) {
+    .content h1 {
+        font-size: 1.8em; /* Further reduce heading size */
+    }
+
+    .connect-wallet, .disconnect-wallet {
+        width: 100%; /* Make buttons full-width */
+        padding: 12px; /* Increase padding for better touch targets */
+    }
+
+    .image-container {
+        padding: 10px;
+    }
+
+    .image-container img {
+        max-width: 70%; /* Further reduce image size */
+    }
+}
