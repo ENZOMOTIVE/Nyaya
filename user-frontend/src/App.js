@@ -6,13 +6,15 @@ import SubmitPage from './components/Submit/submit';
 import './App.css';
 
 function App() {
-  const [walletConnected, setWalletConnected] = useState(false);
+  const [walletAddress, setWalletAddress] = useState('');
 
   const connectWallet = async () => {
     if (window.ethereum) {
       try {
-        await window.ethereum.request({ method: 'eth_requestAccounts' });
-        setWalletConnected(true);
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        setWalletAddress(accounts[0]);
+        // Show notification
+        alert('Wallet connected!');
       } catch (error) {
         console.error('Failed to connect wallet:', error);
       }
@@ -28,9 +30,11 @@ function App() {
           <nav>
             <Link to="/">Home</Link>
             <Link to="/casefile">File Case</Link>
-            <button onClick={connectWallet}>
-              {walletConnected ? 'Wallet Connected' : 'Connect Wallet'}
-            </button>
+            {walletAddress ? (
+              <p>Wallet Address: {walletAddress}</p>
+            ) : (
+              <button onClick={connectWallet}>Connect Wallet</button>
+            )}
           </nav>
           <Routes>
             <Route path="/" element={<WelcomePage />} />
