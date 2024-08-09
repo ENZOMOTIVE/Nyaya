@@ -96,11 +96,13 @@ const PoliceContractABI =  [
 const Dashboard = () => {
   const [cases, setCases] = useState([]);
   const [selectedCase, setSelectedCase] = useState(null);
+  const [walletConnected, setWalletConnected] = useState(false);
 
   useEffect(() => {
     const fetchCases = async () => {
       try {
         const result = await axios.get('http://localhost:5000/cases');
+        console.log('Fetched cases:', result.data);
         setCases(result.data);
       } catch (error) {
         console.error('Error fetching cases:', error);
@@ -109,13 +111,23 @@ const Dashboard = () => {
     fetchCases();
   }, []);
 
+  const handleViewCase = (caseData) => {
+    setSelectedCase(caseData);
+  };
+
   const registerFIR = async (caseId) => {
-    if (typeof window.ethereum !== 'undefined') {
+    if (!caseId) {
+      console.error('Invalid caseId:', caseId);
+      alert('Case ID is invalid');
+      return;
+    }
+
+    if (typeof window.ethereum !== 'undefined' && walletConnected) {
       try {
-        const provider = new ethers.BrowserProvider(window.ethereum);
-        await provider.send('eth_requestAccounts', []);
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(PoliceContractAddress, PoliceContractABI, signer);
+        console.log('Registering FIR for caseId:', caseId);
         const transaction = await contract.registerFIR(caseId);
         await transaction.wait();
 
@@ -128,41 +140,47 @@ const Dashboard = () => {
         alert('FIR registration failed');
       }
     } else {
-      alert('MetaMask is not installed');
+      alert('Please connect your wallet first');
     }
   };
 
-  const handleViewCase = (caseData) => {
-    setSelectedCase(caseData);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedCase(null);
-  };
-
   return (
-    <div className="dashboard-container">
-      <h2 className="dashboard-title">Police Dashboard</h2>
-      <div className="cases-list">
-        {cases.map((caseData, index) => (
-          <div key={index} className="case-item">
-            <div className="case-info">
-              <p>Case #{index + 1}: {caseData.brief}</p> {/* Case numbering added here */}
-              <button className="view-case-button" onClick={() => handleViewCase(caseData)}>View Case</button>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div>
+      <h2>Police Dashboard</h2>
+      {cases.map((caseData, index) => (
+        <div key={caseData.id || index} className="case-box">
+          <h3>Case #{index + 1}</h3>
+          <p><strong>Details:</strong> {caseData.details}</p>
+          <p><strong>Evidence:</strong> {caseData.evidence}</p>
+          <button onClick={() => handleViewCase(caseData)}>View Case</button>
+        </div>
+      ))}
 
       {selectedCase && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>Case Details</h3>
-            <p>{selectedCase.details}</p>
-            <button className="register-fir-button" onClick={() => registerFIR(selectedCase.id)}>Register FIR</button>
-            <button className="close-modal-button" onClick={handleCloseModal}>Close</button>
-          </div>
+        <div className="case-details">
+          <h3>Case Details</h3>
+          <p><strong>Details:</strong> {selectedCase.details}</p>
+          <p><strong>Evidence:</strong> {selectedCase.evidence}</p>
+          <button onClick={() => registerFIR(selectedCase.id)}>Register FIR</button>
         </div>
+      )}
+
+      {!walletConnected && (
+        <button onClick={async () => {
+          if (typeof window.ethereum !== 'undefined') {
+            try {
+              const provider = new ethers.providers.Web3Provider(window.ethereum);
+              await provider.send('eth_requestAccounts', []);
+              setWalletConnected(true);
+              alert('Wallet connected');
+            } catch (error) {
+              console.error('Error connecting wallet:', error);
+              alert('Wallet connection failed');
+            }
+          } else {
+            alert('Ethereum wallet not detected');
+          }
+        }}>Connect Wallet</button>
       )}
     </div>
   );
