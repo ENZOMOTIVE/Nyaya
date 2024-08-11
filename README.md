@@ -23,8 +23,4 @@ Nyaya introduces a decentralized system that enables users to file FIRs anonymou
 - **Demo Videos:**
 - **Demo Link:**
 
-## Contributing
-contributions from developers, environmentalists, and anyone passionate about sustainability. Please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to the project.
-We welcome 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
 
