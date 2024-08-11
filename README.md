@@ -10,7 +10,7 @@ Nyaya introduces a decentralized system that enables users to file FIRs anonymou
 
 ## Key Features
 
-- **Anonymity and Privacy:** Nyaya allows users to file FIRs without revealing their identities, safeguarding them from potential retaliation. World ID's proof of personhood protocol ensures privacy while maintaining the system's integrity.
+- **Anonymity and Privacy:** Nyaya allows users to file FIRs without revealing their identities, safeguarding them from potential retaliation.
 - **Blockchain Security:**  FIRs are recorded on the blockchain, creating an immutable and transparent ledger. This guarantees that once an FIR is filed, it cannot be altered, preserving the accuracy and reliability of the report.
 - **Secure Verification Process:** Authorized police officers can verify and validate FIRs through a secure and transparent process, ensuring that only legitimate cases are registered.
 - **Smart Contracts on Celo:** The platform's smart contracts are deployed using Blockscout on the Celo network, specifically on the Dango and Alfajers testnets, ensuring secure and efficient contract execution.
