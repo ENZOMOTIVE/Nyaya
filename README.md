@@ -16,7 +16,8 @@ Nyaya introduces a decentralized system that enables users to file FIRs anonymou
 - **Smart Contracts on Celo:** The platform's smart contracts are deployed using Blockscout on the Celo network, specifically on the Dango and Alfajers testnets, ensuring secure and efficient contract execution.
 
 ## Deployment and Verification
-- **Celo- Dango** [Contract Address]()
+- **Celo- Dango** [Contract Address](https://celo-dango.blockscout.com/address/0xE6Cacbf03319ABB3e19C97943705D8DA1f57e934)
+- **Celo Alfajores**  - 0xd9145CCE52D386f254917e481eB44e9943F39138 
 
 ## Links
 - **Demo Videos:**
