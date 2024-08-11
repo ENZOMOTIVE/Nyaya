@@ -1,33 +1,70 @@
 /* Dashboard.css */
+
 .dashboard {
   padding: 20px;
+  background-color: #f4f4f9;
+  font-family: 'Arial', sans-serif;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.cases-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .case-box {
+  background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
   padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.case-summary {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+}
+
+.view-case-button {
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.view-case-button:hover {
+  background-color: #002244;
 }
 
 .case-details {
-  flex: 1;
-}
-
-.case-actions {
-  margin-left: 20px;
-}
-
-.selected-case {
+  margin-top: 10px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 15px;
   background-color: #f9f9f9;
 }
 
-button {
+.register-fir-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
   margin-top: 10px;
+}
+
+.register-fir-button:hover {
+  background-color: #0056b3;
 }

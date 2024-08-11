@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Dashboard.css'; // Ensure to import the CSS file
 
 const Dashboard = () => {
   const [cases, setCases] = useState([]);
@@ -19,7 +20,7 @@ const Dashboard = () => {
   }, []);
 
   const handleViewCase = (caseData) => {
-    setSelectedCase(caseData);
+    setSelectedCase(selectedCase?.id === caseData.id ? null : caseData);
   };
 
   const registerFIR = async (caseId) => {
@@ -41,38 +42,32 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <h2>Police Dashboard</h2>
-      {cases.map((caseData, index) => (
-        <div key={caseData.id} className="case-box">
-          <div className="case-details">
-            <h3>Case #{caseData.id}</h3>
-            <p><strong>Incident Date:</strong> {caseData.incidentDetails.dateTime}</p>
-            <p><strong>Nature of Incident:</strong> {caseData.incidentDetails.natureOfIncident}</p>
-            <p><strong>Place of Occurrence:</strong> {caseData.incidentDetails.placeOfOccurrence}</p>
-            <p><strong>Description:</strong> {caseData.description}</p>
-            <p><strong>Digital Signature:</strong> {caseData.digitalSignature}</p>
-            <p><strong>Evidence:</strong> {caseData.evidence}</p>
+      <h2 className="dashboard-title">Police Dashboard</h2>
+      <div className="cases-container">
+        {cases.map((caseData) => (
+          <div key={caseData.id} className="case-box">
+            <div className="case-summary">
+              <h3>Case #{caseData.id}</h3>
+              <p><strong>Date:</strong> {caseData.incidentDetails.dateTime}</p>
+              <p><strong>Nature:</strong> {caseData.incidentDetails.natureOfIncident}</p>
+              <p><strong>Place:</strong> {caseData.incidentDetails.placeOfOccurrence}</p>
+              <button onClick={() => handleViewCase(caseData)} className="view-case-button">
+                {selectedCase?.id === caseData.id ? 'Hide Details' : 'View Details'}
+              </button>
+              {selectedCase?.id === caseData.id && (
+                <div className="case-details">
+                  <p><strong>Description:</strong> {caseData.description}</p>
+                  <p><strong>Digital Signature:</strong> {caseData.digitalSignature}</p>
+                  <p><strong>Evidence:</strong> {caseData.evidence}</p>
+                  <button onClick={() => registerFIR(caseData.id)} className="register-fir-button">
+                    Register FIR
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-          <div className="case-actions">
-            <button onClick={() => handleViewCase(caseData)}>View Case</button>
-            {selectedCase?.id === caseData.id && (
-              <button onClick={() => registerFIR(caseData.id)}>Register FIR</button>
-            )}
-          </div>
-        </div>
-      ))}
-  
-      {selectedCase && (
-        <div className="selected-case">
-          <h3>Case Details</h3>
-          <p><strong>Incident Date:</strong> {selectedCase.incidentDetails.dateTime}</p>
-          <p><strong>Nature of Incident:</strong> {selectedCase.incidentDetails.natureOfIncident}</p>
-          <p><strong>Place of Occurrence:</strong> {selectedCase.incidentDetails.placeOfOccurrence}</p>
-          <p><strong>Description:</strong> {selectedCase.description}</p>
-          <p><strong>Digital Signature:</strong> {selectedCase.digitalSignature}</p>
-          <p><strong>Evidence:</strong> {selectedCase.evidence}</p>
-        </div>
-      )}
+        ))}
+      </div>
     </div>
   );
 };
