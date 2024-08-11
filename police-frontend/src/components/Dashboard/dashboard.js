@@ -150,21 +150,29 @@ const Dashboard = () => {
       {cases.map((caseData, index) => (
         <div key={caseData.id || index} className="case-box">
           <h3>Case #{index + 1}</h3>
-          <p><strong>Details:</strong> {caseData.details}</p>
+          <p><strong>Incident Date:</strong> {caseData.incidentDetails.dateTime}</p>
+          <p><strong>Nature of Incident:</strong> {caseData.incidentDetails.natureOfIncident}</p>
+          <p><strong>Place of Occurrence:</strong> {caseData.incidentDetails.placeOfOccurrence}</p>
+          <p><strong>Description:</strong> {caseData.description}</p>
+          <p><strong>Digital Signature:</strong> {caseData.digitalSignature}</p>
           <p><strong>Evidence:</strong> {caseData.evidence}</p>
           <button onClick={() => handleViewCase(caseData)}>View Case</button>
         </div>
       ))}
-
+  
       {selectedCase && (
         <div className="case-details">
           <h3>Case Details</h3>
-          <p><strong>Details:</strong> {selectedCase.details}</p>
+          <p><strong>Incident Date:</strong> {selectedCase.incidentDetails.dateTime}</p>
+          <p><strong>Nature of Incident:</strong> {selectedCase.incidentDetails.natureOfIncident}</p>
+          <p><strong>Place of Occurrence:</strong> {selectedCase.incidentDetails.placeOfOccurrence}</p>
+          <p><strong>Description:</strong> {selectedCase.description}</p>
+          <p><strong>Digital Signature:</strong> {selectedCase.digitalSignature}</p>
           <p><strong>Evidence:</strong> {selectedCase.evidence}</p>
           <button onClick={() => registerFIR(selectedCase.id)}>Register FIR</button>
         </div>
       )}
-
+  
       {!walletConnected && (
         <button onClick={async () => {
           if (typeof window.ethereum !== 'undefined') {
@@ -184,6 +192,6 @@ const Dashboard = () => {
       )}
     </div>
   );
-};
+}
 
 export default Dashboard;
