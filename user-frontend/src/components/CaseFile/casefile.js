@@ -3,7 +3,7 @@ import { ethers } from 'ethers'; // Correct import statement
 import axios from 'axios';
 import './casefile.css';
 
-const UserContractABI = [
+const UserContractABI =[
   {
     "anonymous": false,
     "inputs": [
@@ -22,13 +22,43 @@ const UserContractABI = [
       {
         "indexed": false,
         "internalType": "string",
-        "name": "details",
+        "name": "dateTime",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "natureOfIncident",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "placeOfOccurrence",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "digitalSignature",
         "type": "string"
       },
       {
         "indexed": false,
         "internalType": "string",
         "name": "evidence",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "photoHash",
         "type": "string"
       }
     ],
@@ -70,12 +100,37 @@ const UserContractABI = [
       },
       {
         "internalType": "string",
-        "name": "details",
+        "name": "dateTime",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "natureOfIncident",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "placeOfOccurrence",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "digitalSignature",
         "type": "string"
       },
       {
         "internalType": "string",
         "name": "evidence",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "photoHash",
         "type": "string"
       },
       {
@@ -91,12 +146,37 @@ const UserContractABI = [
     "inputs": [
       {
         "internalType": "string",
-        "name": "_details",
+        "name": "_dateTime",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_natureOfIncident",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_placeOfOccurrence",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_description",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_digitalSignature",
         "type": "string"
       },
       {
         "internalType": "string",
         "name": "_evidence",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_photoHash",
         "type": "string"
       }
     ],
@@ -106,9 +186,9 @@ const UserContractABI = [
     "type": "function"
   }
 ];  
-const UserContractAddress = '0x1236c297c286625282937D5Dbb869eb055F27446'; // Replace with your contract address
-const pinataApiKey = 'your_pinata_api_key'; // Replace with your Pinata API key
-const pinataSecretApiKey = 'your_pinata_secret_api_key'; // Replace with your Pinata secret API key
+const UserContractAddress = '0xE6Cacbf03319ABB3e19C97943705D8DA1f57e934'; // Replace with your contract address
+const pinataApiKey = '88ed209b792a500230ad'; // Replace with your Pinata API key
+const pinataSecretApiKey = '92bc59c9db47bb18cde9f5fad9c89e3aa8c338a537171b51c2bf4d77efc8e28c'; // Replace with your Pinata secret API key
 
 const CaseFile = () => {
   const [incidentDetails, setIncidentDetails] = useState({
