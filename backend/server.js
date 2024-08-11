@@ -25,7 +25,7 @@ app.get('/cases', (req, res) => {
   res.send(cases);
 });
 
-// Endpoint to notify user (you'll need to implement the notification logic)
+// Endpoint to notify user
 app.post('/notify-user', (req, res) => {
   const { caseId } = req.body;
   console.log('Notify user about FIR registration for caseId:', caseId);
