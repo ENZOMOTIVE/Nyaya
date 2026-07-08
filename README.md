@@ -1,10 +1,22 @@
 # Nyaya
 
-> Nyaya is a decentralized application workspace where the product interface and smart-contract layer live together.
+> Nyaya is an e-FIR system prototype with World ID integration for identity-aware complaint workflows.
 
 ## The Story
 
 Nyaya starts with a simple goal: connect a user-facing product experience with protocol logic that can be inspected and evolved. Its shape tells the same story: the product interface, the service layer, and the protocol or smart-contract layer live close enough together that a maintainer can see the project as a whole before diving into individual folders.
+
+## Detailed Description
+
+Nyaya is an e-FIR system prototype with World ID integration for identity-aware complaint workflows. This README is meant to explain the project like a handoff note: what the idea is, why the repository exists, and how someone can start working with it without opening every file first.
+
+The repository is most useful when the frontend and contract layer are documented together. The UI explains the user journey, while the protocol files explain the rules, assets, or verification model behind that journey.
+
+At the top level, the most important entry points are `backend`, `contracts`, `hardhat.config.js`, `ignition`, `package.json`, and `police-frontend`. Together they show the current boundary of the project and make it easier to separate product code, support files, documentation, and experiments.
+
+The declared Node surfaces include `backend` (scripts: `test`), the root package (no scripts declared), `police-frontend` (scripts: `start`, `build`, `test`, `eject`), and `user-frontend` (scripts: `start`, `build`, `test`, `eject`). Those package files are the best starting points for understanding how the app runs, builds, or validates itself.
+
+The visible stack currently points to `React`, `Express`, `Hardhat`, `Node.js`, `JavaScript`, `Solidity`, `HTML`, and `CSS`. Keep this list honest as the project changes so the README remains useful as a first technical map.
 
 ## What It Includes
 
